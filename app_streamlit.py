@@ -30,11 +30,11 @@ input_features = [age, length_of_service, salary, gender, marital_status]
 
 # ปุ่มกดเพื่อทำนาย
 if st.button("Predict"):
-    response = requests.post("http://127.0.0.1:10000/predict", json={"features": input_features})
+    response = requests.post("http://127.0.0.1:5000/predict", json={"features": input_features})
     result = response.json()
 
     # แปลงค่าผลลัพธ์เป็นข้อความที่เข้าใจง่าย
-    prediction_label = "ยังคงทำงาน" if result["prediction"] == 0 else "ลาออกจากงาน"
+    prediction_label = "ยังคงทำงาน" if result["prediction"] == 1 else "ลาออกจากงาน"
 
     st.write(f"Prediction: {prediction_label}")
 
